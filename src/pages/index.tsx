@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
-import math from '@/lib/math';
 import { Title } from '@/styles/pages/Home';
+import SEO from '@/components/SEO';
 
 interface IProduct {
   id: string;
@@ -13,8 +13,6 @@ interface HomeProps {
 
 export default function Home({ recommendedProducts }) {
   async function handleSum() {
-    console.log(process.env.NEXT_PUBLIC_API_URL);
-
     const math = (await import('@/lib/math')).default;
 
     alert(math.sum(3, 5));
@@ -22,6 +20,12 @@ export default function Home({ recommendedProducts }) {
 
   return (
     <div>
+      <SEO 
+        title="DevCommerce, your best e-commerce!" 
+        image="boost.png"
+        shouldExcludeTitleSuffix
+      />
+
       <section>
         <Title>Products</Title>
 
